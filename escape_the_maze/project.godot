@@ -11,7 +11,12 @@ config_version=4
 [application]
 
 config/name="Escape The Maze"
-config/icon="res://icon.png"
+run/main_scene="res://ui/StartScreen.tscn"
+config/icon="res://icons8-castle-door-64.png"
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [display]
 
