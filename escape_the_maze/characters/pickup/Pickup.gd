@@ -1,6 +1,7 @@
 extends Area2D
 
 signal coin_pickup
+signal key_grabbed
 
 var textures = {
 	"coin"		: "res://assets/coin.png",
@@ -8,7 +9,13 @@ var textures = {
 	"star"		: "res://assets/star.png"
 }
 
-var type
+var type 
+
+var streams = {
+	"coin"		: "res://assets/audio/coin_pickup.ogg",
+	"key_red"	: "res://assets/audio/key_grabbed.ogg",
+	"star"		: "res://assets/audio/key_grabbed.ogg"
+}
 
 func _ready():
 	$Tween.interpolate_property(
@@ -31,13 +38,18 @@ func _ready():
 
 func init(_type, pos):
 	$Sprite.texture = load(textures[_type])
-	type = _type
+	$AudioStreamPlayer.stream = load(streams[_type])
 	position = pos
+	type = _type
 
 func pickup():
 	match type:
 		"coin":
 			emit_signal("coin_pickup", 1)
+			$AudioStreamPlayer.play()
+		"key_red":
+			emit_signal("key_grabbed")
+			$AudioStreamPlayer.play()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Tween.start()
 

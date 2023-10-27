@@ -3,7 +3,7 @@ extends Area2D
 export (int) var speed
 
 var tile_size = 64
-var can_move = true
+onready var can_move = true
 var facing = Vector2.RIGHT
 
 var moves = {	"down"	: Vector2.DOWN,

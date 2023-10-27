@@ -1,8 +1,10 @@
 extends CanvasLayer
 
+onready var score = $MarginContainer/HBoxContainer/ScoreLabel
+
 func _ready():
-	$MarginContainer/ScoreLabel.text = str(Global.score)
+	score.text = str(Global.score)
 
 func update_score(value):
 	Global.score += value
-	$MarginContainer/ScoreLabel.text = str(Global.score)
+	score.text = str(Global.score)

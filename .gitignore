@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # Own ignores
 *.zip
+
+# Source code of the tutorial
+escape_the_maze/source/
